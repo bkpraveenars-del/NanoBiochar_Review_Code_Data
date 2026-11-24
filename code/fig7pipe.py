@@ -60,7 +60,7 @@ phase(31, 19, "PHASE 3 · Multi-environment trials (G × A × E)",
       [("Design", "split-plot: amendment main plots, genotypes sub-plots"),
        ("Network", "≥ 10–12 site-years spanning the aridity gradient"),
        ("Covariates", "rainfall, PET, texture, salinity, Eh, char-C tracing")])
-gate(23, "Data sufficient?", "power ≥ 0.8 (Fig. 9)")
+gate(23, "Data sufficient?", "power ≥ 0.8 (Fig. 8)")
 arrow((41, 31), (41, 29.1))
 loop(23, 40.5, "add site-years")
 arrow((41, 17), (41, 14.6)); ax.text(35.5, 15.4, "YES", fontsize=5.8, fontweight="bold", color=GREEN)
@@ -78,4 +78,4 @@ for x, title, l1, l2, col in [(2, "PATH A · Hydro-structural buffering (static 
     ax.text(x + 1.5, 2.6, l2, fontsize=5.9, color=C["red"] if "≠" in l2 else C["ink2"], va="center",
             fontweight="bold" if "≠" in l2 else "normal")
 arrow((28, 12.9), (25.5, 11.2)); arrow((54, 12.9), (74.5, 11.2))
-save(fig, "Fig7_translation_pipeline")
+save(fig, "FigS1_translation_pipeline")

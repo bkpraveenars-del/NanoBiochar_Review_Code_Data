@@ -1,11 +1,11 @@
-"""Figure 6. Bipartite network view of the evidence-graded synergy-antagonism matrix (redrawn
-and completed from the author's draft SVG: all 36 non-zero links, aligned nodes, graded line style)."""
+"""Figure 6. Bipartite network view of the revised evidence-graded synergy-antagonism matrix
+(all non-zero links; line style by evidence grade). Data: matrix_data.py."""
 import numpy as np
 from matplotlib.path import Path
 from matplotlib.patches import PathPatch, FancyBboxPatch
 from matplotlib.lines import Line2D
 from style import *
-from fig5 import levers, outcomes, S
+from matrix_data import levers, outcomes, S, FLOODED_COL
 
 outs = [o.replace("\n", " ") for o in outcomes]
 fig, ax = plt.subplots(figsize=(180 * MM, 120 * MM))
@@ -21,7 +21,7 @@ style = {"A": "-", "B": "-", "C": (0, (5, 2.5)), "D": (0, (1.2, 2))}
 edges = []
 for i in range(nl):
     for j in range(no):
-        sc, gr = S[i][j]
+        sc, gr = S[i][j][:2]
         if sc != 0:
             edges.append((gr, i, j, sc))
 edges.sort(key=lambda e: "DCBA".index(e[0]))
@@ -43,7 +43,7 @@ def node(x, y, label, sub=None, side="L", tally=None):
         ax.text(x + bw / 2, y - 1.7, tally, ha="center", va="center", fontsize=5.4, color=C["ink2"], zorder=4)
 
 for i, lab in enumerate(levers):
-    pos = sum(1 for s, g in S[i] if s > 0); neg = sum(1 for s, g in S[i] if s < 0)
+    pos = sum(1 for c in S[i] if c[0] > 0); neg = sum(1 for c in S[i] if c[0] < 0)
     node(xL, yl[i], lab.replace(" (<100 nm)", " (<100 nm)"), tally="%d synerg%s · %d antagonism%s" % (pos, "y" if pos == 1 else "ies", neg, "" if neg == 1 else "s"))
 for j, lab in enumerate(outs):
     net = sum(S[i][j][0] for i in range(nl))

@@ -142,7 +142,7 @@ if __name__ == "__main__":
     ax.set_xlim(-0.6, 2.6)
     ax.set_title("Stability by amendment", loc="left")
     panel(ax, "c", -0.3)
-    save(fig, "Fig8_simulated_MET")
+    save(fig, "Fig7_simulated_MET")
 
     out = dict(anova=[[a[0], int(a[1]), round(a[2], 2), round(a[3], 3), None if np.isnan(a[4]) else round(a[4], 2),
                        None if np.isnan(a[5]) else float("%.2g" % a[5]), round(a[6], 1)] for a in anova],

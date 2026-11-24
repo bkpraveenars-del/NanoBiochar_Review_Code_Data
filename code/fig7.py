@@ -67,6 +67,6 @@ if __name__ == "__main__":
     ax.legend(loc="upper right", title="unexplained amendment × environment SD", title_fontsize=6.2)
     ax.set_title("Design requirement", loc="left")
     panel(ax, "b", -0.17)
-    save(fig, "Fig9_power")
+    save(fig, "Fig8_power")
     for k, v in res.items():
         print(k, [round(x, 2) for x in v])
